@@ -93,20 +93,10 @@ public class LeagueServiceImplTest {
     @Test
     @Tag("testCreateLeagueSizeOfParticipantFailure")
   	public void testCreateLeagueSizeOfParticipantFailure() {
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	participants.add(participants1);
-    	league.setParticipants(participants);
+    	while(participants.size()<13) {
+        	participants.add(participants1);
+    	}
+		league.setParticipants(participants);
     	System.out.println(league.getParticipants().size());
     	Assertions.assertThrows(NoParticipantFound.class, () -> {
     		leagueServiceImpl.createLeague(league);

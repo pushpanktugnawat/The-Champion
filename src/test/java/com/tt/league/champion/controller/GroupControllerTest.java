@@ -23,37 +23,34 @@ import com.tt.league.champion.service.IGroupsService;
 public class GroupControllerTest {
 
 	@Autowired
-    private MockMvc mockMvc;
+	private MockMvc mockMvc;
 
-    @MockBean
-    private IGroupsService groupsService;
-    
-    
-    @Test
-    @Tag("testCreateGroupSuccess")
-    void testCreateGroupSuccess() throws Exception {
+	@MockBean
+	private IGroupsService groupsService;
 
-    	mockMvc.perform(post("/api/groups").contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-    }
-    
-    
-    
-	/*
+	@Test
+	@Tag("testCreateGroupSuccess")
+	void testCreateGroupSuccess() throws Exception {
+
+		mockMvc.perform(post("/api/groups").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
+	}
+
+	
+	  
+	/*To do
 	 * @Test
 	 * 
 	 * @Tag("testCreateGroupFailure") void testCreateGroupFailure() throws Exception
-	 * { mockMvc.perform(post("/api/groups")
-	 * .contentType(MediaType.APPLICATION_JSON) .accept(MediaType.APPLICATION_JSON))
-	 * .andExpect(result -> Assertions.assertTrue(result.getResolvedException()
-	 * instanceof Exception)); //.andExpect(result ->
+	 * { mockMvc.perform(post("/api/groups").contentType(MediaType.APPLICATION_JSON)
+	 * .accept(MediaType.APPLICATION_JSON)) //.andExpect(result ->
+	 * Assertions.assertTrue(result.getResolvedException() instanceof Exception))
+	 * .andExpect(result ->
 	 * Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,
 	 * result.getResolvedException().getMessage()));
 	 * 
 	 * }
 	 */
+	 
 
-   
 }

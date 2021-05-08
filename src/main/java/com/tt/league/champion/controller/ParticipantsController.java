@@ -35,11 +35,7 @@ public class ParticipantsController {
 	public ResponseEntity<String> createParticipants(@RequestBody Participants participants)
 	{
 		logger.info("@method createParticipants");
-		try {
-			return ResponseEntity.ok(participantsService.createParticipants(participants));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-		} 
+		return ResponseEntity.ok(participantsService.createParticipants(participants));
 	}
 
 	/**
