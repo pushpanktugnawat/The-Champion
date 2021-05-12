@@ -1,5 +1,6 @@
 package com.tt.league.champion.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -64,5 +65,15 @@ public class ParticipantsControllerTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(content().string(MessageUtils.PARTICIPANTS_CREATED_SUCCESSFULLY));
     }
+	
+	@Test
+	@Tag("testFindAllParticipants")
+	void testFindAllParticipants() throws Exception{
+		Mockito.when(participantsService.findAllParticipants()).thenReturn(participantsList);
+    	mockMvc.perform(get("/api/participants").contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+	}
 
 }

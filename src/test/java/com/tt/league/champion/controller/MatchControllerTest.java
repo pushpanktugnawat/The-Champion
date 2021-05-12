@@ -2,6 +2,7 @@ package com.tt.league.champion.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -71,7 +72,7 @@ public class MatchControllerTest {
     @Tag("testUpdateMatch")
     void testUpdateMatch() throws Exception {
     	Mockito.when(matchesService.updateMatchWinnerAndResult(this.match)).thenReturn(MessageUtils.LEAGUE_CREATED_SUCCESSFULLY);
-    	mockMvc.perform(post("/api/match/updateMatch").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(this.match))
+    	mockMvc.perform(put("/api/match/updateMatch").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(this.match))
                 .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))

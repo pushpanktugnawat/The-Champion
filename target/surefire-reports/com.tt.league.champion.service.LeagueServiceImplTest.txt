@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.tt.league.champion.service.LeagueServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.753 s - in com.tt.league.champion.service.LeagueServiceImplTest

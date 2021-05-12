@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.tt.league.champion.controller.RoundsControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.566 s <<< FAILURE! - in com.tt.league.champion.controller.RoundsControllerTest
+testFindAllMatchesByRoundNo  Time elapsed: 0.166 s  <<< FAILURE!
+java.lang.AssertionError: Content type not set
+	at com.tt.league.champion.controller.RoundsControllerTest.testFindAllMatchesByRoundNo(RoundsControllerTest.java:81)
+

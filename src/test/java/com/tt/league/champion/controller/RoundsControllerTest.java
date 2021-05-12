@@ -1,8 +1,8 @@
 package com.tt.league.champion.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.LocalDate;
@@ -75,7 +75,7 @@ public class RoundsControllerTest {
     void testFindAllMatchesByRoundNo() throws Exception {
     	
     	Mockito.when(roundsService.findAllMatchesByRoundNo(1)).thenReturn(roundList);
-    	mockMvc.perform(put("/api/rounds/1").contentType(MediaType.APPLICATION_JSON)
+    	mockMvc.perform(get("/api/rounds/1").contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON));

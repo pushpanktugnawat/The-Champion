@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.tt.league.champion.exceptions.NoParticipantFound;
+import com.tt.league.champion.exceptions.UnexpectedServerErrorException;
 import com.tt.league.champion.model.Matches;
 import com.tt.league.champion.model.Participants;
 import com.tt.league.champion.model.Round;
@@ -50,7 +49,9 @@ public class RoundsServiceImplTest {
     	player2=new Participants((long) 2, "Mark", "m@mail.com", 2, "+919754258164");
     	
     	match=new Matches((long) 1, player1, player2, round, LocalDate.now(), "2-1,3-2", player1, null);
+    	//match1=new Matches((long) 1, player1, player2, round, LocalDate.now(), "2-1,3-2", player1, null);
     	matchesList.add(match);
+    	//matchesList.add(match1);
     	round=new Round((long)1, "Round 1", 1, RoundStatus.NEW, matchesList);
     	
     	roundList.add(round);
@@ -80,9 +81,24 @@ public class RoundsServiceImplTest {
 	{
     	Mockito.when(roundRepository.findById(round.getRoundId())).thenReturn(Optional.empty());
     	String roundNotFound = roundServiceImpl.closeRound(round.getRoundId());
-    	
-    	String closeRoundStatus = roundServiceImpl.closeRound(round.getRoundId());
     	Assertions.assertEquals(MessageUtils.UNABLE_TO_FIND_ROUND, roundNotFound);
+    }
+    
+    @Test
+	public void closeRoundUnableToFindWinner() 
+	{
+    	round.getMatches().stream().forEach(match->match.setWinner(null));
+    	Mockito.when(roundRepository.findById(round.getRoundId())).thenReturn(Optional.of(round));
+    	//String roundNotFound = roundServiceImpl.closeRound(round.getRoundId());
+    	Assertions.assertThrows(UnexpectedServerErrorException.class, () -> {
+    		roundServiceImpl.closeRound(round.getRoundId());
+    	  });
+    }
+    
+    @Test
+	public void createRoundTest() 
+	{
+    	Mockito.when(roundServiceImpl.createRound(round)).thenReturn(round);
     }
     
    

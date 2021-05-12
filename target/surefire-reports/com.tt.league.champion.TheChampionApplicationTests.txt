@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.tt.league.champion.TheChampionApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.241 s - in com.tt.league.champion.TheChampionApplicationTests
