@@ -71,7 +71,7 @@ public class MatchControllerTest {
     @Test
     @Tag("testUpdateMatch")
     void testUpdateMatch() throws Exception {
-    	Mockito.when(matchesService.updateMatchWinnerAndResult(this.match)).thenReturn(MessageUtils.LEAGUE_CREATED_SUCCESSFULLY);
+    	Mockito.when(matchesService.updateMatchWinnerAndResult(this.match)).thenReturn(MessageUtils.MATCH_WINNER_UPDATED_SUCCESSFULLY);
     	mockMvc.perform(put("/api/match/updateMatch").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(this.match))
                 .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
