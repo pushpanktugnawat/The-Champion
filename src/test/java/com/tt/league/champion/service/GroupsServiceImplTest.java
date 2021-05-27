@@ -2,7 +2,9 @@ package com.tt.league.champion.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,9 +13,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.tt.league.champion.exceptions.UnexpectedServerErrorException;
+import com.tt.league.champion.model.Group;
 import com.tt.league.champion.model.Participants;
 import com.tt.league.champion.repository.IGroupRepository;
 import com.tt.league.champion.service.impl.GroupsServiceImpl;
+import com.tt.league.champion.utils.MessageUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class GroupsServiceImplTest {
@@ -50,4 +55,16 @@ public class GroupsServiceImplTest {
     	Mockito.when(participantsService.findAllParticipants()).thenReturn(participantsList);
     	groupsServiceImpl.createGroups();
 	}
+    
+    @Test
+	public void closeRoundUnableToFindRoundTest() 
+	{
+    	Mockito.when(participantsService.findAllParticipants()).thenReturn(null);
+    	Assertions.assertThrows(UnexpectedServerErrorException.class, () -> {
+    		groupsServiceImpl.createGroups();
+    	  });
+    }
+    
+    
+
 }

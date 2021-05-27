@@ -71,7 +71,7 @@ public class LeagueServiceImpl implements ILeagueService{
 			League persistendLeague=leagueOpt.get();
 			persistendLeague.setWinner(league.getWinner());
 			leagueRepository.save(persistendLeague);
-			sendMail(league.getWinner().getEmailId());
+			//sendMail(league.getWinner().getEmailId());
 			return MessageUtils.CHAMPION_UPDATED_SUCCESSFULLY;
 		}else
 		{

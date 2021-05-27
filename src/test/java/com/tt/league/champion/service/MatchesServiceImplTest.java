@@ -1,11 +1,15 @@
 package com.tt.league.champion.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,6 +23,7 @@ import com.tt.league.champion.model.Round;
 import com.tt.league.champion.model.Round.RoundStatus;
 import com.tt.league.champion.repository.IMatchesRepository;
 import com.tt.league.champion.service.impl.MatchesServiceImpl;
+import com.tt.league.champion.utils.MessageUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class MatchesServiceImplTest {
@@ -70,4 +75,15 @@ public class MatchesServiceImplTest {
 	{
     	matchesServiceImpl.createMatches(participantsList, 1, 1, 1, null);
 	}
+    
+    @Test
+    @Tag("testUpdateMatchWinnerAndResult")
+  	public void testUpdateMatchWinnerAndResult() {
+    	match.setWinner(player1);
+    	Mockito.when(matchesRepository.findById(match.getMatchId())).thenReturn(Optional.of(match));
+    	Mockito.when(matchesRepository.save(match)).thenReturn(match);
+    	Mockito.when(roundsService.closeRound(match.getRound().getRoundId())).thenReturn("match");
+    	String updateLeagueChampion = matchesServiceImpl.updateMatchWinnerAndResult(match);
+    	assertEquals(MessageUtils.MATCH_WINNER_UPDATED_SUCCESSFULLY, updateLeagueChampion);
+    }
 }

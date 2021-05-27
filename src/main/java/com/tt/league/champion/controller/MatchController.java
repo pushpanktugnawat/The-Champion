@@ -33,7 +33,6 @@ public class MatchController {
 	public ResponseEntity<List<Matches>> findAllMatches()
 	{
 		logger.info("@method findAllMatches");
-
 		return ResponseEntity.ok(matchesService.findAllMatches());
 	}
 

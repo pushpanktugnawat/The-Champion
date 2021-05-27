@@ -1,0 +1,11 @@
+com\tt\league\champion\controller\GroupControllerTest.class
+com\tt\league\champion\controller\ParticipantsControllerTest.class
+com\tt\league\champion\service\MatchesServiceImplTest.class
+com\tt\league\champion\service\RoundsServiceImplTest.class
+com\tt\league\champion\service\LeagueServiceImplTest.class
+com\tt\league\champion\service\GroupsServiceImplTest.class
+com\tt\league\champion\TheChampionApplicationTests.class
+com\tt\league\champion\controller\LeagueControllerTest.class
+com\tt\league\champion\service\ParticipantsServiceImplTest.class
+com\tt\league\champion\controller\MatchControllerTest.class
+com\tt\league\champion\controller\RoundsControllerTest.class

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.tt.league.champion.controller.MatchControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.028 s <<< FAILURE! - in com.tt.league.champion.controller.MatchControllerTest
+testUpdateMatch  Time elapsed: 0.441 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<405>
+	at com.tt.league.champion.controller.MatchControllerTest.testUpdateMatch(MatchControllerTest.java:76)
+
